@@ -17,25 +17,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: myAppBar(title: 'E-Proxy'),
+        appBar: myAppBar(title: 'BT Attendance'),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            buildButton(
-                title: 'Take Attendance',
-                onPress: (){}
-            ),
+            buildButton(title: 'Take Attendance', onPress: () {}),
             buildButton(
                 title: 'Today\'s Report',
-                onPress: (){
+                onPress: () {
                   Navigator.push(
                     context,
-                    CupertinoPageRoute(builder: (context)=>const Report()),
+                    CupertinoPageRoute(builder: (context) => const Report()),
                   );
-                }
-            ),
+                }),
             buildButton(
-              title: 'Register Students',
+                title: 'Register Students',
                 onPress: (){
                   Navigator.push(
                     context,
@@ -74,12 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
           ),
-          onLongPress: (){
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text("Sending Message"),
-            ));
-          },
-
             child: Text(
                 title,
                 style:const TextStyle(fontSize: 20),
