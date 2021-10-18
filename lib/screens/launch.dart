@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:eproxy/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LaunchScreen extends StatefulWidget {
@@ -10,6 +13,10 @@ class LaunchScreen extends StatefulWidget {
 class _LaunchScreenState extends State<LaunchScreen> {
   @override
   Widget build(BuildContext context) {
+    Timer(
+      const Duration(seconds: 1),
+        () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext)=>const HomeScreen()))
+    );
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -20,7 +27,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
               'BT Attendance',
             style: TextStyle(
               fontWeight: FontWeight.w900,
-              fontSize: 35.0,
+              fontSize: 38.0,
               color: Colors.white
             ),
             ),

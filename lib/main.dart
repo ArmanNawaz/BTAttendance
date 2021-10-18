@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.teal,
       ),
       title: 'Flutter Demo',
-        home: const HomeScreen(),
+        home: const LaunchScreen(),
     );
   }
 }
