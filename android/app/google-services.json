@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "855766268681",
+    "project_id": "bt-attendance2021",
+    "storage_bucket": "bt-attendance2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855766268681:android:c78176d81bf15e4d88b1d8",
+        "android_client_info": {
+          "package_name": "com.arman.eproxy.eproxy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855766268681-o8ftkhqcg9rjkg3ivisiemt996vmetvn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFlX6Kagv6B7OCjNbYFeWQpXrXGquhBxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "855766268681-o8ftkhqcg9rjkg3ivisiemt996vmetvn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
