@@ -1,3 +1,4 @@
+import 'package:eproxy/services/bluetoothlist.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eproxy/screens/report.dart';
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPress: () {
                   Navigator.push(
                     context,
-                    CupertinoPageRoute(builder: (context) => const Report()),
+                    MaterialPageRoute(builder: (context) => BluePage()),
                   );
                 }),
             buildButton(
