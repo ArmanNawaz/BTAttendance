@@ -1,4 +1,6 @@
+import 'package:eproxy/screens/scan_page.dart';
 import 'package:eproxy/services/bluetoothlist.dart';
+import 'package:eproxy/services/get_devices.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eproxy/screens/report.dart';
@@ -13,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int start = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +28,18 @@ class _HomeScreenState extends State<HomeScreen> {
             buildButton(title: 'Take Attendance', onPress: () {}),
             buildButton(
                 title: 'Today\'s Report',
-                onPress: () {
+                onPress: () async{
+
+                  GetDevices getDevices = GetDevices();
+                  if(start == 0){
+                    getDevices.startScan();
+                    start++;
+                  }
+                  // getDevices.print1();
+                  await getDevices.getDevicesList();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => BluePage()),
+                    MaterialPageRoute(builder: (context) => ScanPage()),
                   );
                 }),
             buildButton(
