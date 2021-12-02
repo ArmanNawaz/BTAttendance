@@ -1,7 +1,8 @@
 import 'package:flutter_blue/flutter_blue.dart';
 
 class GetDevices{
-  List<BluetoothDevice> deviceList = [];
+  // List<BluetoothDevice> deviceList = [];
+  Set <BluetoothDevice> deviceList = {};
   final FlutterBlue flutterBlue = FlutterBlue.instance;
 
   print1(){
@@ -16,7 +17,7 @@ class GetDevices{
   }
 
 
-  Future<List<BluetoothDevice>> getDevicesList() async{
+  Future<Set<BluetoothDevice>> getDevicesList() async{
 
     await flutterBlue.scanResults.listen((List<ScanResult> results) {
       for(ScanResult result in results){
@@ -31,7 +32,7 @@ class GetDevices{
     //   if(!deviceList.contains(device)) deviceList.add(device);
     // }
     Future.delayed(Duration(seconds: 2));
-    print(deviceList.length);
+    print("Devices length = ${deviceList.length}");
     return deviceList;
   }
 
@@ -40,6 +41,7 @@ class GetDevices{
   }
   stopScan() async{
     await flutterBlue.stopScan();
+    deviceList = {};
   }
   Stream scannedReults() async*{
     print('Scan Starts');

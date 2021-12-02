@@ -1,3 +1,4 @@
+import 'package:eproxy/constants.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,7 @@ class BluePage extends StatefulWidget {
 
   final FlutterBlue flutterBlue = FlutterBlue.instance;
   final List<BluetoothDevice> deviceList = [];
+  //final BluetoothState state = BluetoothState.off;
 
   @override
   _BluePageState createState() => _BluePageState();
@@ -62,11 +64,11 @@ class _BluePageState extends State<BluePage> {
               ),
               TextButton(
                 child: Container(
-                  width: 50.0,
+                  width: 80.0,
                     height: 30.0,
-                    child: Text(
+                    child: const Text(
                     'Connect',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                     ),
                 ),
                 onPressed: () {},
@@ -78,7 +80,7 @@ class _BluePageState extends State<BluePage> {
       );
     }
     return ListView(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       children: containers,
     );
   }
@@ -100,9 +102,7 @@ class _BluePageState extends State<BluePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Devices after scan'),
-      ),
+      appBar: myAppBar(title: 'Device List'),
       body: _buildListViewOfDevices(),
     );
   }
