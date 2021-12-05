@@ -25,9 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            buildButton(title: 'Take Attendance', onPress: () {}),
+            buildButton(title: 'Today\'s Report', onPress: () {}),
             buildButton(
-                title: 'Today\'s Report',
+                title: 'Take Attendance',
                 onPress: () async{
 
                   GetDevices getDevices = GetDevices();
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   await getDevices.getDevicesList();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ScanPage()),
+                    CupertinoPageRoute(builder: (context) => ScanPage()),
                   );
                 }),
             buildButton(
