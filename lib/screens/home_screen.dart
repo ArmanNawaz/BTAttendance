@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            buildButton(title: 'Today\'s Report', onPress: () {}),
             buildButton(
                 title: 'Take Attendance',
                 onPress: () async{
@@ -55,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: 'View Students List',
                 onPress: (){}
                 ),
-            const SizedBox(height: 20.0,)
+            const SizedBox(height: 60.0),
           ],
         ),
       ),
