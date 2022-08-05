@@ -1,0 +1,122 @@
+CREATE TABLE Class(
+    class_name CHAR(3) PRIMARY KEY
+);
+
+INSERT INTO Class Values('CS');
+INSERT INTO Class Values('EC');
+INSERT INTO Class Values('IT');
+INSERT INTO Class Values('EN');
+
+ CREATE TABLE Section(
+    class_n_section_id CHAR(3) PRIMARY KEY,
+    section_name CHAR(2),
+    class_name CHAR(3) NOT NULL ,
+    CONSTRAINT fk_section FOREIGN KEY(class_name) REFERENCES Class(class_name)
+);
+
+INSERT INTO Section Values('CSA', 'A', 'CS');
+INSERT INTO Section Values('CSB', 'B', 'CS');
+INSERT INTO Section Values('ECA', 'A', 'EC');
+INSERT INTO Section Values('ECB', 'B', 'EC');
+INSERT INTO Section Values('ITA', 'A', 'IT');
+INSERT INTO Section Values('ITB', 'B', 'IT');
+INSERT INTO Section Values('ENA', 'A', 'EN');
+INSERT INTO Section Values('ENB', 'B', 'EN');
+
+-- +--------------------+--------------+------------+
+-- | class_n_section_id | section_name | class_name |
+-- +--------------------+--------------+------------+
+-- | CSA                | A            | CS         |
+-- | CSB                | B            | CS         |
+-- | ECA                | A            | EC         |
+-- | ECB                | B            | EC         |
+-- | ENA                | A            | EN         |
+-- | ENB                | B            | EN         |
+-- | ITA                | A            | IT         |
+-- | ITB                | B            | IT         |
+-- +--------------------+--------------+------------+
+
+CREATE TABLE Teacher(
+    t_id SMALLINT PRIMARY KEY,
+    t_name VARCHAR(32),
+    class_n_section_id CHAR(3),
+    CONSTRAINT fk_teachers FOREIGN KEY(class_n_section_id) REFERENCES Section(class_n_section_id)
+);
+
+INSERT INTO Teacher(t_id, t_name, class_n_section_id) VALUES(101, 'Raj Vikramaditya', 'CSA');
+INSERT INTO Teacher(t_id, t_name, class_n_section_id) VALUES(102, 'Mohammad Fraz', 'CSB');
+INSERT INTO Teacher(t_id, t_name, class_n_section_id) VALUES(103, 'Angela Yu', 'ECA');
+INSERT INTO Teacher(t_id, t_name, class_n_section_id) VALUES(104, 'Life', 'ECB');
+INSERT INTO Teacher(t_id, t_name, class_n_section_id) VALUES(105, 'Aditya Verma', 'ENA');
+INSERT INTO Teacher(t_id, t_name, class_n_section_id) VALUES(106, 'Akash Verma', 'ENB');
+INSERT INTO Teacher(t_id, t_name, class_n_section_id) VALUES(107, 'Life', 'ITA');
+INSERT INTO Teacher(t_id, t_name, class_n_section_id) VALUES(108, 'Bill Gates', 'ITB');
+
+-- +------+------------------+--------------------+
+-- | t_id | t_name           | class_n_section_id |
+-- +------+------------------+--------------------+
+-- |  101 | Raj Vikramaditya | CSA                |
+-- |  102 | Mohammad Fraz    | CSB                |
+-- |  103 | Angela Yu        | ECA                |
+-- |  104 | Life             | ECB                |
+-- |  105 | Aditya Verma     | ENA                |
+-- |  106 | Akash Verma      | ENB                |
+-- |  107 | Life             | ITA                |
+-- |  108 | Bill Gates       | ITB                |
+-- +------+------------------+--------------------+
+
+CREATE TABLE STUDENT(
+    s_id INT PRIMARY KEY,
+    s_name VARCHAR(32) NOT NULL,
+    phone_number INT NOT NULL,
+    email VARCHAR(32),
+    class_n_section_id VARCHAR(5) NOT NULL,
+    CONSTRAINT fk_student FOREIGN KEY(class_n_section_id) REFERENCES Section(class_n_section_id)
+);
+
+INSERT into STUDENT VALUES(10001, 'Asim Junaid', 1234567890, 'asim@email.com', 'CSA');
+INSERT into STUDENT VALUES(10002, 'Arman Nawaz', 1234567891, 'arman@email.com', 'CSA');
+INSERT into STUDENT VALUES(10003, 'Hasan Siddiqui', 1234567892, 'hasan@email.com', 'ECA');
+INSERT into STUDENT VALUES(10004, 'Owais Rashid', 1234567893, 'owais@email.com', 'ECA');
+INSERT into STUDENT VALUES(10005, 'Khizar Ansari', 1234567894, 'khizer@email.com', 'ENA');
+INSERT into STUDENT VALUES(10006, 'Rishi Tomar', 1234567895, 'Rishi@email.com', 'ENA');
+INSERT into STUDENT VALUES(10007, 'Fahad Khan', 1234567896, 'fahad@email.com', 'ITA');
+INSERT into STUDENT VALUES(10008, 'Sikandar Laique', 1234567897, 'sikandar@email.com', 'ITA');
+
+-- +-------+-----------------+--------------+--------------------+--------------------+
+-- | s_id  | s_name          | phone_number | email              | class_n_section_id |
+-- +-------+-----------------+--------------+--------------------+--------------------+
+-- | 10001 | Asim Junaid     |   1234567890 | asim@email.com     | CSA                |
+-- | 10002 | Arman Nawaz     |   1234567891 | arman@email.com    | CSA                |
+-- | 10003 | Hasan Siddiqui  |   1234567892 | hasan@email.com    | ECA                |
+-- | 10004 | Owais Rashid    |   1234567893 | owais@email.com    | ECA                |
+-- | 10005 | Khizar Ansari   |   1234567894 | khizer@email.com   | ENA                |
+-- | 10006 | Rishi Tomar     |   1234567895 | Rishi@email.com    | ENA                |
+-- | 10007 | Fahad Khan      |   1234567896 | fahad@email.com    | ITA                |
+-- | 10008 | Sikandar Laique |   1234567897 | sikandar@email.com | ITA                |
+-- +-------+-----------------+--------------+--------------------+--------------------+
+
+CREATE TABLE MAC_ADDRESS(
+    address CHAR(17) PRIMARY KEY,
+    s_id INT,
+    CONSTRAINT pk_max_address FOREIGN KEY(s_id) REFERENCES Student(s_id)
+);
+
+INSERT INTO Mac_address Values('6C:AB:31:7D:B4:89', 10001);
+
+Select * from Student Natural Join Mac_address;
+-- +-------+-------------+--------------+----------------+--------------------+-------------------+
+-- | s_id  | s_name      | phone_number | email          | class_n_section_id | address           |
+-- +-------+-------------+--------------+----------------+--------------------+-------------------+
+-- | 10001 | Asim Junaid |   1234567890 | asim@email.com | CSA                | 6C:AB:31:7D:B4:89 |
+-- +-------+-------------+--------------+----------------+--------------------+-------------------+
+
+CREATE TABLE Attendence(
+    s_id INT,
+    date DateTime,
+    attendence_status TINYINT NOT NULL,
+    CONSTRAINT fk_attendence FOREIGN KEY (s_id) REFERENCES STUDENT(s_id),
+    CONSTRAINT pk_attendence PRIMARY KEY(s_id, date)
+);
+
+ALTER TABLE Attendence add FOREIGN KEY(t_id) REFERENCES Teacher(t_id);
