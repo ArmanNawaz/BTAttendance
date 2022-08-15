@@ -8,12 +8,12 @@ This App will provide function to register students in the database mapped with 
 ## ER Diagram 
 
 <p align = "center">
-<img src="BTAttendance/blob/master/Diagrams/bt_attendence_er.png">
+<img src="Diagrams/bt_attendence_er.png">
 </p>  
 
 ## Flow Diagram  
 
 <p align = "center">
-<img src="BTAttendance/blob/master/Diagrams/bt_attendance_flow_diagram.png">
+<img src="Diagrams/bt_attendance_flow_diagram.png">
 </p>  
 
